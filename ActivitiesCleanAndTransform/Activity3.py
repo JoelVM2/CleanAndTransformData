@@ -1,28 +1,13 @@
 import pandas as pd
 
-students = pd.DataFrame({
-    "Name": ["Ana", "Juan", "María", "Pedro"],
-    "Age": [20, 21, 22, 22],
-    "Grade": [8.5, 7.0, 6.5, 9.0]
-})
-students.to_csv("students.csv", index=False)
+students_df = pd.read_csv("ActivitiesCleanAndTransform/students.csv")
+print("Primeras 5 filas de students.csv:\n", students_df.head())
 
-csv_df = pd.read_csv("students.csv")
-print("\nFirst 5 rows of CSV:\n", csv_df.head())
+clean_students_df = students_df.dropna()
+clean_students_df.to_csv("clean_students.csv", index=False)
+print("\nArchivo 'clean_students.csv' creado con éxito.")
 
-clean_csv = csv_df.dropna()
-clean_csv.to_csv("clean_students.csv", index=False)
-print("\nFile created successfully.")
+grades_df = pd.read_csv("ActivitiesCleanAndTransform/grades.csv")
 
-students_info = pd.DataFrame({
-    "Name": ["Ana", "Juan", "María", "Pedro"],
-    "Age": [20, 21, 22, 22],
-    "Class": ["A", "B", "A", "B"]
-})
-grades = pd.DataFrame({
-    "Name": ["Ana", "Juan", "María", "Pedro"],
-    "Grade": [8.5, 7.0, 6.5, 9.0]
-})
-
-merged_df = pd.merge(students_info, grades, on="Name")
-print("\nMerged data (students + grades):\n", merged_df)
+merged_df = pd.merge(clean_students_df, grades_df, on="Name")
+print("\nDatos fusionados (students + grades):\n", merged_df)

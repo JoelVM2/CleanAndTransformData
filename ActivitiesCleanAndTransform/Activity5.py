@@ -29,4 +29,4 @@ df["AgeGroup"] = pd.cut(df["Age"], bins=[0,25,45,65,100], labels=["Young","Adult
 print("\nData with new columns (first 5 rows):\n", df.head())
 
 df.to_csv("customer_data_clean.csv", index=False)
-print("\nExported cleaned data to 'customer_data_clean.csv'.")
+print("\nExported cleaned data.")
