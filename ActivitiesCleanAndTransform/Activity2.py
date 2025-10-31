@@ -5,7 +5,7 @@ students = pd.DataFrame({
     "Grade": [8.5, 7.0, 6.5, 9.0]
 })
 
-students["Result"] = students["Grade"].apply(lambda x: "Aprobado" if x >= 5 else "Suspenso")
+students["Result"] = students["Grade"].apply(lambda x: "Pass" if x >= 5 else "Fail")
 print("\nWith 'Result' column:\n", students)
 
 sales = pd.DataFrame({
